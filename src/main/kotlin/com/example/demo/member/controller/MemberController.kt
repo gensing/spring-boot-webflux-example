@@ -1,6 +1,6 @@
 package com.example.demo.member.controller
 
-import com.example.demo.member.data.Member
+import com.example.demo.member.model.data.Member
 import com.example.demo.member.service.MemberService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
