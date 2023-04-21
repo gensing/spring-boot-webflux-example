@@ -16,7 +16,11 @@ class MemberRouter(
     @Bean
     fun coRouter() = coRouter {
         ("/co/members" and accept(APPLICATION_JSON)).nest {
+            GET("") { memberHandler.findAll(it) }
             GET("/{id}") { memberHandler.findOne(it) }
+            POST("") { memberHandler.create(it) }
+            PUT("/{id}") { memberHandler.update(it) }
+            DELETE("/{id}") { memberHandler.delete(it) }
         }
     }
 }
