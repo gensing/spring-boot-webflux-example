@@ -1,6 +1,6 @@
-package com.example.demo.member.repository
+package com.example.demo.app.member.repository
 
-import com.example.demo.member.model.data.Member
+import com.example.demo.app.member.model.data.Member
 import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 
 interface MemberRepositoryCoroutine : CoroutineCrudRepository<Member, Long> {

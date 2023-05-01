@@ -1,7 +1,7 @@
-package com.example.demo.member.service
+package com.example.demo.app.member.service
 
-import com.example.demo.member.model.data.Member
-import com.example.demo.member.repository.MemberRepositoryCoroutine
+import com.example.demo.app.member.model.data.Member
+import com.example.demo.app.member.repository.MemberRepositoryCoroutine
 import kotlinx.coroutines.flow.Flow
 import org.springframework.stereotype.Service
 

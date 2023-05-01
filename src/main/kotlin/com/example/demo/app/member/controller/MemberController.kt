@@ -1,7 +1,7 @@
-package com.example.demo.member.controller
+package com.example.demo.app.member.controller
 
-import com.example.demo.member.model.data.Member
-import com.example.demo.member.service.MemberService
+import com.example.demo.app.member.model.data.Member
+import com.example.demo.app.member.service.MemberService
 import kotlinx.coroutines.flow.Flow
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -19,27 +19,24 @@ class MemberController(
     }
 
     @GetMapping("")
-    suspend fun findAll(@PathVariable id: Long): ResponseEntity<Flow<Member>> {
+    fun findAll(): Flow<Member> {
         return memberService.findAll()
-                .let { ResponseEntity.ok(it) }
     }
 
     @GetMapping("/{id}")
     suspend fun findOne(@PathVariable id: Long): ResponseEntity<Member> {
         return memberService.findOne(id)
                 ?.let { ResponseEntity.ok(it) }
-                ?: ResponseEntity.notFound().build();
+                ?: ResponseEntity.ok(Member(1, "not found"))
     }
 
     @PutMapping("/{id}")
-    suspend fun update(@PathVariable id: Long, @RequestBody member: Member): ResponseEntity<Any> {
+    suspend fun update(@PathVariable id: Long, @RequestBody member: Member) {
         return memberService.update(id, member)
-                .let { ResponseEntity.ok().build() }
     }
 
     @DeleteMapping("/{id}")
-    suspend fun delete(@PathVariable id: Long): ResponseEntity<Any> {
+    suspend fun delete(@PathVariable id: Long) {
         return memberService.delete(id)
-                .let { ResponseEntity.ok().build() }
     }
 }

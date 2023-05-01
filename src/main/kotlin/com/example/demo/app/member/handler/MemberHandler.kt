@@ -1,12 +1,12 @@
-package com.example.demo.member.handler
+package com.example.demo.app.member.handler
 
-import com.example.demo.member.model.data.Member
-import com.example.demo.member.service.MemberService
-import org.springframework.context.annotation.Configuration
+import com.example.demo.app.member.model.data.Member
+import com.example.demo.app.member.service.MemberService
+import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.server.*
 
 
-@Configuration
+@Component
 class MemberHandler(
         private val memberService: MemberService
 ) {
@@ -18,7 +18,8 @@ class MemberHandler(
     }
 
     suspend fun findAll(request: ServerRequest): ServerResponse {
-        return ServerResponse.ok().json().bodyValueAndAwait(memberService.findAll())
+        return memberService.findAll()
+                .let { ServerResponse.ok().json().bodyAndAwait(it) }
     }
 
     suspend fun findOne(request: ServerRequest): ServerResponse {
