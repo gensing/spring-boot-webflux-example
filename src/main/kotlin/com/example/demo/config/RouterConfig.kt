@@ -1,15 +1,13 @@
-package com.example.demo.member.router
+package com.example.demo.config
 
 import com.example.demo.member.handler.MemberHandler
-import com.example.demo.member.service.MemberService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.MediaType.APPLICATION_JSON
-import org.springframework.web.reactive.function.server.bodyValueAndAwait
 import org.springframework.web.reactive.function.server.coRouter
 
 @Configuration
-class MemberRouter(
+class RouterConfig(
         private val memberHandler: MemberHandler
 ) {
 
